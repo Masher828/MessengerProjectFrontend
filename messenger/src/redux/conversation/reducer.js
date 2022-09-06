@@ -13,6 +13,7 @@ const conversationReducer = (state = initState, action) => {
         ...state,
         isLoading: true,
         isError: false,
+        conversation: [],
       };
     case ActionConstants.GET_CONVERSATION_REQUEST_SUCCESS:
       return {
@@ -21,6 +22,24 @@ const conversationReducer = (state = initState, action) => {
         conversation: action.data,
       };
     case ActionConstants.GET_CONVERSATION_REQUEST_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: action.error,
+      };
+    case ActionConstants.SEARCH_CONVERSATION_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        conversation: [],
+      };
+    case ActionConstants.SEARCH_CONVERSATION_REQUEST_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        conversation: action.data,
+      };
+    case ActionConstants.SEARCH_CONVERSATION_REQUEST_FAILURE:
       return {
         ...state,
         isLoading: false,

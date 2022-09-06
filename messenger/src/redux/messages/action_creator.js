@@ -299,3 +299,35 @@ export const GetMessages = (conversationId) => (dispatch) => {
 
   dispatch(getMessageRequestSuccess(conversation[0]));
 };
+
+const searchMessageRequest = () => {
+  return {
+    type: ActionConstants.SEARCH_MESSAGES_REQUEST,
+  };
+};
+
+const searchMessageRequestSuccess = (data) => {
+  return {
+    type: ActionConstants.SEARCH_MESSAGES_REQUEST_SUCCESS,
+    data: data,
+  };
+};
+
+const searchMessageRequestFailure = (error) => {
+  return {
+    type: ActionConstants.SEARCH_MESSAGES_REQUEST_FAILURE,
+    error: error,
+  };
+};
+
+export const SearchInConversation = (conversationId) => (dispatch) => {
+  dispatch(searchMessageRequest());
+
+  const conversation = data
+    .filter((conversation) => conversation.conversationId == conversationId)
+    .map((conversation) => {
+      return conversation;
+    });
+
+  dispatch(searchMessageRequestSuccess(conversation[0]));
+};

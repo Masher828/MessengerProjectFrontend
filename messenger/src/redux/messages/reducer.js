@@ -26,6 +26,24 @@ const messagesReducer = (state = initState, action) => {
         isLoading: false,
         isError: action.error,
       };
+    case ActionConstants.SEARCH_MESSAGES_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        isError: null,
+      };
+    case ActionConstants.SEARCH_MESSAGES_REQUEST_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        messages: action.data,
+      };
+    case ActionConstants.SEARCH_MESSAGES_REQUEST_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: action.error,
+      };
     default:
       return state;
   }

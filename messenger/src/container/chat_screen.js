@@ -18,9 +18,13 @@ const ChatScreen = () => {
 
   const messageData = useSelector((state) => state.messages);
 
+  useEffect(() => {
+    console.log(messageData);
+  });
+
   return (
     <>
-      {messageData && !messageData.isLoading ? (
+      {messageData.messages.messages && !messageData.isLoading ? (
         <SimpleGrid columns={3} className="wrapper">
           <GridItem colSpan={showUserDetails ? 2 : 3}>
             <VStack direction={"column"} align="left">
